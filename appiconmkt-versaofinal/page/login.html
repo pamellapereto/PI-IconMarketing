@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - iCON</title>
+  <link rel="stylesheet" href="/css/stylea.css"/>
+</head>
+
+<body>
+  <div class="container">
+    <div class="login-box">
+      <h1 class="logo">iCON<span></span></h1>
+      <p class="subtitle">Bem vindo!</p>
+      <form id="form-login">
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="Digite seu email" required>
+
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" placeholder="Digite sua senha" required>
+
+        <a href="#" class="forgot">Esqueceu a senha</a>
+
+        <button type="submit">Login</button>
+      </form>
+      <div class="register">
+        <p>Não tem cadastro? <a href="#">Cadastre-se</a></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('form-login').addEventListener('submit', async function(event) {
+      event.preventDefault(); // Impede recarregamento da página
+
+      const email = document.getElementById('email').value;
+      const senha = document.getElementById('senha').value;
+
+      try {
+        const resposta = await fetch('http://localhost:3000/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ email, senha })
+        });
+
+        const dados = await resposta.json();
+
+        if (resposta.ok) {
+          alert(dados.mensagem); // Ou redirecionar: window.location.href = "/dashboard.html";
+          console.log('Usuário autenticado:', dados.usuario);
+        } else {
+          alert(dados.mensagem || 'Erro ao fazer login');
+        }
+      } catch (erro) {
+        console.error('Erro ao fazer login:', erro);
+        alert('Erro de conexão com o servidor');
+      }
+    });
+  </script>
+</body>
+</html>

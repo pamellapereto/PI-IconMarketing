@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Registro - iCON</title>
+  <link rel="stylesheet" href="/css/stylea.css"/>
+</head>
+
+
+<body>
+  <div class="container">
+    <div class="login-box">
+      <h1 class="logo">iC<span>Ø</span>N</h1>
+      <p class="subtitle small">Por favor, digite o nome, email e senha da empresa</p>
+      <form id="form-cadastro">
+        <label for="nomeFantasia">Nome Fantasia:</label>
+        <input type="text" id="nomeFantasia" name="nome_fantasia" placeholder="Digite o nome fantasia" required>
+
+        <label for="razaoSocial">Razão Social:</label>
+        <input type="text" id="razaoSocial" name="razao_social" placeholder="Digite a razão social" required>
+
+        <label for="cnpj">CNPJ:</label>
+        <input type="text" id="cnpj" name="cnpj" placeholder="Digite o CNPJ" required>
+
+        <label for="segmento">Segmento:</label>
+        <input type="text" id="segmento" name="segmento" placeholder="Digite o segmento de atuação" required>
+
+        <label for="telefone">Telefone:</label>
+        <input type="text" id="telefone" name="telefone" placeholder="Digite o telefone de contato" required>
+
+        <label for="site">Site:</label>
+        <input type="text" id="site" name="site" placeholder="Digite o site do cliente" required>
+
+        <label for="idUsuario">ID do Usuário (interno):</label>
+        <input type="number" id="idUsuario" name="id_usuario" placeholder="Digite o ID do usuário responsável" required>
+
+        <button type="submit" class="btn-cadastrar">Cadastrar Cliente</button>
+      </form>
+
+      <div class="register">
+        <p>Já tenho uma conta<br><a href="index.html">Login</a></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("form-cadastro").addEventListener("submit", async (event) => {
+      event.preventDefault(); // Evita recarregamento da página
+
+      const nome_fantasia = document.getElementById("nomeFantasia").value.trim();
+      const razao_social = document.getElementById("razaoSocial").value.trim();
+      const cnpj = document.getElementById("cnpj").value.trim();
+      const segmento = document.getElementById("segmento").value.trim();
+      const telefone = document.getElementById("telefone").value.trim();
+      const site = document.getElementById("site").value.trim();
+      const id_usuario = parseInt(document.getElementById("idUsuario").value.trim());
+
+      if (!nome_fantasia || !razao_social || !cnpj || !segmento || !telefone || !site || isNaN(id_usuario)) {
+        return alert("Preencha todos os campos corretamente.");
+      }
+
+      try {
+        const resposta = await fetch("http://localhost:3000/clientes", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            nome_fantasia,
+            razao_social,
+            cnpj,
+            segmento,
+            telefone,
+            site,
+            id_usuario
+          })
+        });
+
+        const dados = await resposta.json();
+
+        if (resposta.ok) {
+          alert(dados.mensagem);
+          document.getElementById("form-cadastro").reset(); // Limpa os campos
+          document.getElementById("modalCadastroCliente").classList.add("hidden"); // Fecha o modal, se aplicável
+        } else {
+          alert(dados.mensagem || "Erro ao cadastrar cliente");
+        }
+      } catch (erro) {
+        console.error("Erro ao cadastrar cliente:", erro);
+        alert("Erro de conexão com o servidor");
+      }
+    });
+  </script>
+</body>
+</html>
