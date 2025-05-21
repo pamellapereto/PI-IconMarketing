@@ -62,7 +62,7 @@ As funcionalidades já implementadas incluem:
 
 5. Inicie o servidor:
 
-  <img src="./PI-IconMarketing/src/assets/5.png">
+  <img src="./appiconmkt-versaofinal/src/assets/5.png">
 
 6. Acesse em: http://localhost:3000
 
