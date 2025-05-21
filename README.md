@@ -27,11 +27,11 @@ As funcionalidades já implementadas incluem:
 ### Web
 
 <p align="center" style="display: flex; align-items: flex-start; justify-content: center;">
-  <img alt="Tela do aplicativo versão Web" src="./PI-IconMarketing/src/assets/web1.png" width="400px">
+  <img alt="Tela do aplicativo versão Web" src="./appiconmkt-versaofinal/src/assets/web1.png" width="400px">
 
-  <img alt="Telas do aplicativo versão Web" src="./PI-IconMarketing/src/assets/web2.png" width="400px">
+  <img alt="Telas do aplicativo versão Web" src="./appiconmkt-versaofinal/src/assets/web2.png" width="400px">
 
-  <img alt="Telas do aplicativo versão Web" src="./PI-IconMarketing/src/assets/web3.png" width="400px">
+  <img alt="Telas do aplicativo versão Web" src="./appiconmkt-versaofinal/src/assets/web3.png" width="400px">
 </p>
 
 ## 🚀 Como Executar
@@ -46,19 +46,19 @@ As funcionalidades já implementadas incluem:
 
 1. Clone o repositório:
 
-  <img src="./PI-IconMarketing/src/assets/1.png">
+  <img src="./appiconmkt-versaofinal/src/assets/1.png">
 
 2. Acesse a pasta do projeto:
 
-  <img src="./PI-IconMarketing/src/assets/2.png">
+  <img src="./appiconmkt-versaofinal/src/assets/2.png">
 
 3. Instale as dependências:
 
-  <img src="./PI-IconMarketing/src/assets/3.png">
+  <img src="./appiconmkt-versaofinal/src/assets/3.png">
 
 4. Crie um arquivo .env com as variáveis de conexão com o banco:
 
-  <img src="./PI-IconMarketing/src/assets/4.png">
+  <img src="./appiconmkt-versaofinal/src/assets/4.png">
 
 5. Inicie o servidor:
 
@@ -86,7 +86,7 @@ Indicadores de ROI e CPC por cliente (futuramente integráveis)
 
 📁 Estrutura de Pastas
 
-<img src="./PI-IconMarketing/src/assets/estrutura.png">
+<img src="./appiconmkt-versaofinal/src/assets/estrutura.png">
 
 📌 Requisitos
 
